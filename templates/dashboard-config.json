@@ -1,0 +1,33 @@
+{
+  "dashboardName": "QA Optimization Dashboard",
+  "description": "Dashboard demonstrating improved defect tracking and test cycle time",
+  "gadgets": [
+    {
+      "type": "Created vs Resolved Chart",
+      "title": "Created vs Resolved Issues",
+      "filter": "project = PROJ"
+    },
+    {
+      "type": "Burndown Chart",
+      "title": "Sprint Burndown",
+      "sprint": "Current sprint"
+    },
+    {
+      "type": "Pie Chart",
+      "title": "Issues by Status",
+      "statType": "statuses",
+      "filter": "project = PROJ"
+    },
+    {
+      "type": "Issue Statistics",
+      "title": "Defects by Priority",
+      "statType": "priorities",
+      "filter": "project = PROJ AND issuetype = Bug"
+    },
+    {
+      "type": "Average Age Chart",
+      "title": "Average Age of Open Issues",
+      "filter": "project = PROJ"
+    }
+  ]
+}

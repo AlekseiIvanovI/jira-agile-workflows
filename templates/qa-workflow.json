@@ -1,0 +1,54 @@
+{
+  "name": "QA Optimized Workflow",
+  "description": "Custom workflow with dedicated QA statuses for faster cycle time",
+  "steps": [
+    {
+      "name": "To Do",
+      "type": "open"
+    },
+    {
+      "name": "In Progress",
+      "type": "inprogress"
+    },
+    {
+      "name": "In Testing",
+      "type": "inprogress"
+    },
+    {
+      "name": "Blocked",
+      "type": "inprogress"
+    },
+    {
+      "name": "Code Review",
+      "type": "inprogress"
+    },
+    {
+      "name": "Ready for Deployment",
+      "type": "inprogress"
+    },
+    {
+      "name": "Done",
+      "type": "closed"
+    }
+  ],
+  "transitions": [
+    {"from": "To Do", "to": "In Progress", "name": "Start Progress"},
+    {"from": "To Do", "to": "In Testing", "name": "Start Testing"},
+    {"from": "In Progress", "to": "In Testing", "name": "Submit for Testing"},
+    {"from": "In Testing", "to": "Blocked", "name": "Block (Needs Fix)"},
+    {"from": "In Testing", "to": "Code Review", "name": "Tests Passed – Send to Review"},
+    {"from": "In Testing", "to": "Done", "name": "Testing Complete"},
+    {"from": "In Testing", "to": "Ready for Deployment", "name": "Ready for Release"},
+    {"from": "Blocked", "to": "In Testing", "name": "Resume Testing"},
+    {"from": "Blocked", "to": "In Progress", "name": "Return to Development"},
+    {"from": "Code Review", "to": "In Testing", "name": "Re-test After Changes"},
+    {"from": "Code Review", "to": "Ready for Deployment", "name": "Review Approved"},
+    {"from": "Code Review", "to": "Blocked", "name": "Review Failed – Block"},
+    {"from": "Ready for Deployment", "to": "Done", "name": "Deployed"},
+    {"from": "Ready for Deployment", "to": "In Testing", "name": "Post-Deploy Verification"}
+  ],
+  "globalTransitions": [
+    {"to": "Blocked", "name": "Block Issue"},
+    {"to": "Done", "name": "Resolve Issue"}
+  ]
+}
